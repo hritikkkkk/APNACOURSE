@@ -47,6 +47,7 @@ module.exports.login = async (req, res) => {
 
     if (admin) {
       const passwordChecks = bcrypt.compareSync(password, admin.password);
+      
       if (passwordChecks) {
         jwt.sign(
           {
@@ -57,7 +58,7 @@ module.exports.login = async (req, res) => {
           {expiresIn:'1h'},
           (err, token) => {
             if (err) throw err;
-            res.cookie("token", token).json(admin);
+            res.json({ message: "logged in sucessfully", token });
           }
         );
       } else {
@@ -71,3 +72,5 @@ module.exports.login = async (req, res) => {
     res.status(500).json("internal server error");
   }
 };
+
+

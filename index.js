@@ -5,7 +5,10 @@ const app = express();
 const PORT = 3000;
 const mongoose = require("mongoose");
 
+
+
 const adminRouter = require("./routes/admin");
+const courseRouter = require("./routes/course");
 app.use(express.json());
 
 main()
@@ -21,6 +24,8 @@ async function main() {
 }
 
 app.use("/admin", adminRouter);
+app.use("/admin", courseRouter);
+
 
 app.listen(PORT, () => {
   console.log(`ApnaCourse Server is listening to the port ${PORT}`);
