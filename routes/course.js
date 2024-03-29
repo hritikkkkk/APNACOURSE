@@ -8,4 +8,6 @@ router.route("/courses")
     .get(authenticateJwt,courseController.courses)
 
 
+router.put("/courses/:courseId", authenticateJwt, courseController.update);  
+
 module.exports = router;

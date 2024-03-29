@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 
 const adminRouter = require("./routes/admin");
 const courseRouter = require("./routes/course");
+const userRouter = require("./routes/user");
 app.use(express.json());
 
 main()
@@ -25,6 +26,7 @@ async function main() {
 
 app.use("/admin", adminRouter);
 app.use("/admin", courseRouter);
+app.use("/user", userRouter);
 
 
 app.listen(PORT, () => {
